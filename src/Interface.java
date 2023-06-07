@@ -1,62 +1,85 @@
 import java.util.Scanner;
 
-public class Interface {
+    public class Interface {
 
-    enum Interfaces {
-        CPU,
-        GPU,
-        Memory,
-        Storage,
-        PSU,
-        BACK
+    enum Components {
+        SocketAM,
+        LGA,
+        PCIe,
+        DDR3,
+        DDR4,
+        DDR5,
+        NVME,
+        SATA,
+        ATX,
+        ITX,
     }
 
     public static String interfaces() {
         Scanner scanner = new Scanner(System.in);
-        Interfaces interfaces;
+        Components components;
+        Boolean checked = false;
 
         do {
-            System.out.println("Option 1 Menu:");
-            System.out.println("1. CPU");
-            System.out.println("2. GPU");
-            System.out.println("3. Memory");
-            System.out.println("4. Storage");
-            System.out.println("5. PSU");
-            System.out.println("0. Back");
-            System.out.print("Select a Component: ");
+            System.out.println("Select Interface Type:");
+            System.out.println("1.SocketAM ");
+            System.out.println("2.PCIe ");
+            System.out.println("3.DDR3 ");
+            System.out.println("4.DDR4 ");
+            System.out.println("5.DDR5 ");
+            System.out.println("6.NVME ");
+            System.out.println("7.SATA ");
+            System.out.println("8.ATX ");
+            System.out.println("9.ITX ");
+            System.out.print("Select a Interface: ");
 
             int choice = scanner.nextInt();
-            interfaces = Interfaces.values()[choice - 1];
+            components = Components.values()[choice - 1];
 
-            switch (interfaces) {
-                case CPU:
-                    System.out.println("You selected CPU");
+            switch (components) {
+                case SocketAM:
+                    System.out.println("You selected SocketAM");
                     System.out.println("");
-                    return "CPU";
-                case GPU:
-                    System.out.println("You selected GPU");
+                    return "SocketAM";
+                case PCIe:
+                    System.out.println("You selected PCIe");
                     System.out.println("");
-                    return "GPU";
-                case Memory:
-                    System.out.println("You selected Memory");
+                    return "PCIe";
+                case DDR3:
+                    System.out.println("You selected DDR3");
                     System.out.println("");
-                    return "Memory";
-                case Storage:
-                    System.out.println("You selected Storage");
+                    return "DDR3";
+                case DDR4:
+                    System.out.println("You selected DDR4");
                     System.out.println("");
-                    return "Storage";
-                case PSU:
-                    System.out.println("You selected PSU");
+                    return "DDR4";
+                case DDR5:
+                    System.out.println("You selected DDR5");
                     System.out.println("");
-                    return "PSU";
+                    return "DDR5";
+                case NVME:
+                    System.out.println("You selected NVME");
+                    System.out.println("");
+                    return "NVME";
+                case SATA:
+                    System.out.println("You selected SATA");
+                    System.out.println("");
+                    return "SATA";
+                case ATX:
+                    System.out.println("You selected ATX");
+                    System.out.println("");
+                    return "ATX";
+                case ITX:
+                    System.out.println("You selected ITX");
+                    System.out.println("");
+                    return "ITX";
+
                 default:
                     System.out.println("Invalid option. Please try again.");
                     break;
             }
-        } while (interfaces != Interfaces.BACK);
+        } while(true);
 
-        scanner.close();
-        return "";
     }
 }
 

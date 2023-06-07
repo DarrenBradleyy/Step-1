@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Details details = new Details();
         Options selectedOption;
 
         do {
@@ -27,19 +28,20 @@ public class Main {
                     System.out.println(" ");
                     String component = Component.component();
                     String interfaces = Interface.interfaces();
+                    details.details(component,interfaces);
                     break;
                 case Exit:
                     System.out.println("Exiting Menu");
-                    // Perform actions for Option 2
+                    System.out.println(" ");
+                    System.out.println("Menu system exited.");
+                    scanner.close();
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
                     break;
             }
-        } while (selectedOption != Options.Exit);
+        } while (selectedOption!=Options.Exit);
 
-        System.out.println("Menu system exited.");
-        scanner.close();
     }
 }
 
