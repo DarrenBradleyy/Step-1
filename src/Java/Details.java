@@ -1,3 +1,5 @@
+package Java;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -7,9 +9,9 @@ public class Details {
     private static final int SERIAL_NUMBER_LENGTH = 4;
     private static final int MAX_SERIAL_NUMBER = 9999;
     private static Map<String, Integer> usedSerialNumbers = new HashMap<>();
-    private ProductCatalogue productCatalogue = new ProductCatalogue();
+    private static ProductCatalogue productCatalogue = new ProductCatalogue();
 
-    public void details(String component, String interfaces) {
+    public static void details(String component, String interfaces) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the details for the component: ");
@@ -32,24 +34,22 @@ public class Details {
         System.out.println("Product is "+ component+ " " + description + " with interface "+interfaces+ " manufactured by "
                 + manufacturer + " at price "+ price);
 
-        System.out.print("Are these inputs correct? (yes/no): ");
+        System.out.print("Are these inputs correct? (y/n): ");
         String confirmation = scanner.nextLine();
 
-        if (confirmation.equalsIgnoreCase("yes")) {
+        if (confirmation.equalsIgnoreCase("y")) {
             System.out.println("Product ID " + productID + " added to catalogue");
             productCatalogue.writeToCatalogue(productID);
             System.out.println("Press any key to continue... ");
             System.out.println("");
             scanner.nextLine();
-            scanner.close();
-            new Main();
+
 
         } else {
             System.out.println("Inputs not confirmed. Please try again.");
-            new Main();
+
         }
 
-        scanner.close();
     }
 
     private static String getNextSerialNumber(String manufacturerCode) {
