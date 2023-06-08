@@ -25,7 +25,7 @@ public class Details {
         System.out.print("Price: ");
         float price = Float.parseFloat(scanner.nextLine());
 
-        String manufacturerCode = manufacturer.substring(0, Math.min(manufacturer.length(), 4)).toUpperCase();
+        String manufacturerCode = padManufacturerCode(manufacturer);
         String serialNumber = getNextSerialNumber(manufacturerCode);
         String paddedSerialNumber = String.format("%04d", Integer.parseInt(serialNumber));
         String productID = manufacturerCode + paddedSerialNumber;
