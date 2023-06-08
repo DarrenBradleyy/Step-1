@@ -6,10 +6,12 @@ public class Main {
 
     enum Options {
         NewComponent,
+        ProductID,
+        ProductDetails,
         Exit
     }
 
-    private static final Scanner scanner = new Scanner(System.in); // Declare Scanner as a class variable
+    static final Scanner scanner = new Scanner(System.in); // Declare Scanner as a class variable
 
     public static void main(String[] args) {
         boolean continues = menu();
@@ -17,7 +19,7 @@ public class Main {
         restartProgram();
     }
 
-    private static int askForNumber(String prompt) {
+    public static int askForNumber(String prompt) {
         System.out.print(prompt);
 
         while (!scanner.hasNextInt()) {
@@ -29,18 +31,20 @@ public class Main {
         return number;
     }
 
-    private static void restartProgram() {
+    public static void restartProgram() {
         main(new String[0]);
     }
 
-    private static boolean menu(){
+    public static boolean menu(){
         Options selectedOption;
         boolean continueLoop = true; // Flag variable for loop continuation
         do {
             System.out.println("Welcome to the OCP catalogue System");
             System.out.println("Enter an option below:");
-            System.out.println("1. Add a new Java.Component Product to Catalogue");
-            System.out.println("2. Exit");
+            System.out.println("1. Add a new Component Product to Catalogue");
+            System.out.println("2. View all product IDs");
+            System.out.println("3. View all product Details");
+            System.out.println("4. Exit");
             System.out.print("Select an option: ");
 
             int choice = askForNumber("Select an option: ");
@@ -53,6 +57,16 @@ public class Main {
                     String component = Component.component();
                     String interfaces = Interface.interfaces();
                     Details.details(component, interfaces);
+                    return true;
+                case ProductID:
+                    System.out.println("You selected Option 2.");
+                    System.out.println(" ");
+                    ProductID.displayProductIDs();
+                    return true;
+                case ProductDetails:
+                    System.out.println("You selected Option 3.");
+                    System.out.println(" ");
+                    ProductDetails.displayProductDetails();
                     return true;
                 case Exit:
                     System.out.println("Exiting Menu");

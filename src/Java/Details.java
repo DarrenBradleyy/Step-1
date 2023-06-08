@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Details {
 
-    private static final int SERIAL_NUMBER_LENGTH = 4;
-    private static final int MAX_SERIAL_NUMBER = 9999;
+    private static final int SERIAL_NUMBER_LENGTH = 8;
+    private static final int MAX_SERIAL_NUMBER = 99999999;
     private static Map<String, Integer> usedSerialNumbers = new HashMap<>();
     private static ProductCatalogue productCatalogue = new ProductCatalogue();
 
@@ -27,12 +27,12 @@ public class Details {
 
         String manufacturerCode = manufacturer.substring(0, Math.min(manufacturer.length(), 4)).toUpperCase();
         String serialNumber = getNextSerialNumber(manufacturerCode);
-        String paddedSerialNumber = String.format("%0" + SERIAL_NUMBER_LENGTH + "d", Integer.parseInt(serialNumber));
-        String productID = manufacturerCode+paddedSerialNumber;
+        String paddedSerialNumber = String.format("%04d", Integer.parseInt(serialNumber));
+        String productID = manufacturerCode + paddedSerialNumber;
 
 
-        System.out.println("Product is "+ component+ " " + description + " with interface "+interfaces+ " manufactured by "
-                + manufacturer + " at price "+ price);
+        System.out.println("Product is " + component + " " + description + " with interface " + interfaces + " manufactured by "
+                + manufacturer + " at price " + price);
 
         System.out.print("Are these inputs correct? (y/n): ");
         String confirmation = scanner.nextLine();
@@ -40,16 +40,22 @@ public class Details {
         if (confirmation.equalsIgnoreCase("y")) {
             System.out.println("Product ID " + productID + " added to catalogue");
             productCatalogue.writeToCatalogue(productID);
+            ProductDetails productDetails = new ProductDetails(productID, component, interfaces, manufacturer, description, price);
+            productDetails.saveProductDetails();
             System.out.println("Press any key to continue... ");
             System.out.println("");
             scanner.nextLine();
-
 
         } else {
             System.out.println("Inputs not confirmed. Please try again.");
 
         }
+    }
 
+    private static String padManufacturerCode(String manufacturer) {
+        String paddedManufacturerCode = manufacturer.substring(0, Math.min(manufacturer.length(), 4)).toUpperCase();
+        paddedManufacturerCode = String.format("%-4s", paddedManufacturerCode).replace(' ', 'x');
+        return paddedManufacturerCode;
     }
 
     private static String getNextSerialNumber(String manufacturerCode) {
@@ -58,7 +64,3 @@ public class Details {
         return String.valueOf(serialNumber);
     }
 }
-
-
-
-

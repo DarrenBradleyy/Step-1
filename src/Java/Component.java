@@ -25,7 +25,7 @@ public class Component {
             System.out.println("3. Memory");
             System.out.println("4. Storage");
             System.out.println("5. PSU");
-            System.out.println("6. Back");
+            System.out.println("6. Main Menu");
             System.out.print("Select a Component: ");
 
             int choice = scanner.nextInt();
@@ -52,6 +52,10 @@ public class Component {
                     System.out.println("You selected PSU");
                     System.out.println("");
                     return "PSU";
+                case BACK:
+                    System.out.println("Returning to Main Menu");
+                    System.out.println("");
+                    Main.restartProgram();
 
                 default:
                     System.out.println("Invalid option. Please try again.");

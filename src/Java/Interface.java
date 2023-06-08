@@ -15,9 +15,10 @@ import java.util.Scanner;
         SATA,
         ATX,
         ITX,
+        BACK,
     }
 
-    public static String interfaces() {
+    public static String interfaces(){
         Scanner scanner = new Scanner(System.in);
         Components components;
         Boolean checked = false;
@@ -25,14 +26,16 @@ import java.util.Scanner;
         do {
             System.out.println("Select Interface Type:");
             System.out.println("1.SocketAM ");
-            System.out.println("2.PCIe ");
-            System.out.println("3.DDR3 ");
-            System.out.println("4.DDR4 ");
-            System.out.println("5.DDR5 ");
-            System.out.println("6.NVME ");
-            System.out.println("7.SATA ");
-            System.out.println("8.ATX ");
-            System.out.println("9.ITX ");
+            System.out.println("2.LGA");
+            System.out.println("3.PCIe ");
+            System.out.println("4.DDR3 ");
+            System.out.println("5.DDR4 ");
+            System.out.println("6.DDR5 ");
+            System.out.println("7.NVME ");
+            System.out.println("8.SATA ");
+            System.out.println("9.ATX ");
+            System.out.println("10.ITX ");
+            System.out.println("11.Main Menu");
             System.out.print("Select a Interface: ");
 
             int choice = scanner.nextInt();
@@ -43,6 +46,10 @@ import java.util.Scanner;
                     System.out.println("You selected SocketAM");
                     System.out.println("");
                     return "SocketAM";
+                case LGA:
+                    System.out.println("You selected LGA");
+                    System.out.println("");
+                    return "LGA";
                 case PCIe:
                     System.out.println("You selected PCIe");
                     System.out.println("");
@@ -75,6 +82,11 @@ import java.util.Scanner;
                     System.out.println("You selected ITX");
                     System.out.println("");
                     return "ITX";
+                case BACK:
+                    System.out.println("Return to Main Menu");
+                    System.out.println("");
+
+                    Main.restartProgram();
 
                 default:
                     System.out.println("Invalid option. Please try again.");
