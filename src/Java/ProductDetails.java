@@ -35,6 +35,19 @@ public class ProductDetails implements Serializable {
         }
     }
 
+
+    public void writeStockLevels(int[] stock) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream("C:/uni files/cs112/src/TextFiles/stock.txt");
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+
+            objectOutputStream.writeObject(stock);
+            System.out.println("Stock levels saved to stock.txt.");
+
+        } catch (Exception e) {
+            System.out.println("Error occurred while saving stock levels: " + e.getMessage());
+        }
+    }
+
     public String getProductID() {
         return productID;
     }
@@ -95,6 +108,28 @@ public class ProductDetails implements Serializable {
                     scanner.nextLine();
                 }
             }
+        } catch (Exception e) {
+        }
+    }
+
+    public static void displayStockLevels() {
+        try (FileInputStream fileInputStream = new FileInputStream("C:/uni files/cs112/src/TextFiles/stock.txt");
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+            int[] stock = (int[]) objectInputStream.readObject();
+                if (stock == null) {
+                    System.out.println("Stock not found.");
+                }
+                System.out.println("Stock Levels:");
+                System.out.println("Glasgow: " + stock[0]);
+                System.out.println("Glasgow: " + stock[1]);
+                System.out.println("Glasgow: " + stock[0]);
+                System.out.println("Press any key to continue... ");
+                System.out.println("");
+                scanner.nextLine();
+
+
+
         } catch (Exception e) {
         }
     }
