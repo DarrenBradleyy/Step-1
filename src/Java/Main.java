@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
+
     enum Options {
         NewComponent,
         ProductID,
@@ -21,8 +22,8 @@ public class Main {
         restartProgram();
     }
 
-    public static int askForNumber(String prompt) {
-        System.out.print(prompt);
+    public static int askForNumber() {
+        
 
         while (!scanner.hasNextInt()) {
             System.out.println("Invalid input. Please enter a valid number.");
@@ -30,6 +31,10 @@ public class Main {
         }
 
         int number = scanner.nextInt();
+        if (number<=0|| number>4){
+            System.out.println("Enter valid input");
+            number = scanner.nextInt();
+        }
         return number;
     }
 
@@ -51,7 +56,7 @@ public class Main {
             System.out.println("6. Exit");
             System.out.print("Select an option: ");
 
-            int choice = askForNumber("Select an option: ");
+            int choice = askForNumber();
             selectedOption = Options.values()[choice - 1];
 
             switch (selectedOption) {

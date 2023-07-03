@@ -6,6 +6,8 @@ import java.util.Scanner;
 import static Java.Main.scanner;
 
 public class ProductDetails implements Serializable {
+    private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/product_details.txt";
+
     private String productID;
     private String component;
     private String interfaces;
@@ -24,7 +26,7 @@ public class ProductDetails implements Serializable {
     }
 
     public void saveProductDetails() {
-        try (FileOutputStream fileOutputStream = new FileOutputStream("C:/uni files/cs112/src/TextFiles/product_details.txt");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_PATH, true);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
             objectOutputStream.writeObject(this);
@@ -73,7 +75,7 @@ public class ProductDetails implements Serializable {
     }
 
     public static void displayProductDetails() {
-        try (FileInputStream fileInputStream = new FileInputStream("C:/uni files/cs112/src/TextFiles/product_details.txt");
+        try (FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
 
             Scanner scanner = new Scanner(System.in);

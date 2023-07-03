@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ProductCatalogue {
-    //private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step-1/TextFiles/product_codes.txt";
-    private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/product_codes.txt";
+    private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/product_codes.txt";
+    //private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/product_codes.txt";
 
 
     public void writeToCatalogue(String productID){
