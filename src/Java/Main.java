@@ -80,12 +80,12 @@ public class Main {
                 case CheckStock:
                     System.out.println("You selected Option 4.");
                     System.out.println(" ");
-                    ProductDetails.displayStockLevels();
+                    Stock.displayStockLevels();
                     return true;
                 case ChangeStock:
                     System.out.println("You selected Option 5.");
                     System.out.println(" ");
-                    //ProductDetails.displayStockLevels();
+                    ChangeStock.getStock();
                     return true;
                 case Exit:
                     System.out.println("Exiting Menu");

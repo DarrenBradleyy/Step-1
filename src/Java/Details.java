@@ -1,5 +1,6 @@
 package Java;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Details {
     private static final int MAX_SERIAL_NUMBER = 99999999;
     private static Map<String, Integer> usedSerialNumbers = new HashMap<>();
     private static ProductCatalogue productCatalogue = new ProductCatalogue();
-    private static int[] stockLevels = {0,0,0};
+    private static ArrayList<String> stockLevels = new ArrayList<>();
 
     public static void details(String component, String interfaces) {
 
@@ -31,7 +32,6 @@ public class Details {
         String paddedSerialNumber = String.format("%04d", Integer.parseInt(serialNumber));
         String productID = manufacturerCode + paddedSerialNumber;
 
-
         System.out.println("Product is " + component + " " + description + " with interface " + interfaces + " manufactured by "
                 + manufacturer + " at price " + price);
 
@@ -43,7 +43,8 @@ public class Details {
             productCatalogue.writeToCatalogue(productID);
             ProductDetails productDetails = new ProductDetails(productID, component, interfaces, manufacturer, description, price);
             productDetails.saveProductDetails();
-            productDetails.writeStockLevels(stockLevels);
+            Stock stock = new Stock(productID,"0","0","0");
+            stock.writeStockLevels();
             System.out.println("Press any key to continue... ");
             System.out.println("");
             scanner.nextLine();
