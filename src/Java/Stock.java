@@ -7,19 +7,19 @@ import java.util.Scanner;
 
 
 public class Stock implements Serializable {
-    static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
+    private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
     private static ArrayList<Stock> stockList = new ArrayList<>();
 
     private String productID;
-    private String glasgow;
-    private String edinburgh;
-    private String london;
+    private int glasgow;
+    private int edinburgh;
+    private int gourock;
 
-    public Stock(String productID, String glasgow, String edinburgh, String london) {
+    public Stock(String productID, int glasgow, int edinburgh, int gourock) {
         this.productID = productID;
         this.glasgow = glasgow;
         this.edinburgh = edinburgh;
-        this.london = london;
+        this.gourock = gourock;
     }
 
     public void writeStockLevels() {
@@ -76,7 +76,7 @@ public class Stock implements Serializable {
                     System.out.println("Stock:");
                     System.out.println("Glasgow: " + stock.getGlasgow());
                     System.out.println("Edinburgh: " + stock.getEdinburgh());
-                    System.out.println("London: " + stock.getLondon());
+                    System.out.println("Gourock: " + stock.getGourock());
                     System.out.println("Press any key to continue... ");
                     System.out.println("");
                     scanner.nextLine();
@@ -102,16 +102,28 @@ public class Stock implements Serializable {
         return productID;
     }
 
-    public String getGlasgow() {
+    public void setGlasgow(int glasgow) {
+        this.glasgow = glasgow;
+    }
+
+    public void setEdinburgh(int edinburgh) {
+        this.edinburgh = edinburgh;
+    }
+
+    public void setGourock(int gourock) {
+        this.gourock = gourock;
+    }
+
+    public int getGlasgow() {
         return glasgow;
     }
 
-    public String getEdinburgh() {
+    public int getEdinburgh() {
         return edinburgh;
     }
 
-    public String getLondon() {
-        return london;
+    public int getGourock() {
+        return gourock;
     }
 }
 

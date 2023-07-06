@@ -91,6 +91,7 @@ public class Main {
                     System.out.println("Exiting Menu");
                     System.out.println(" ");
                     System.out.println("Menu system exited.");
+                    System.exit(0);
                     continueLoop = false;
                     break;
                 default:

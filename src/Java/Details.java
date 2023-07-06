@@ -43,7 +43,7 @@ public class Details {
             productCatalogue.writeToCatalogue(productID);
             ProductDetails productDetails = new ProductDetails(productID, component, interfaces, manufacturer, description, price);
             productDetails.saveProductDetails();
-            Stock stock = new Stock(productID,"0","0","0");
+            Stock stock = new Stock(productID,0,0,0);
             stock.writeStockLevels();
             System.out.println("Press any key to continue... ");
             System.out.println("");
