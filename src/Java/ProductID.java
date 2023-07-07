@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 
 public class ProductID {
-    //private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/product_codes.txt";
-    private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/product_codes.txt";
+    private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step4/src/TextFiles/product_codes.txt";
+    //private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/product_codes.txt";
     static Scanner scanner = new Scanner(System.in);
 
 

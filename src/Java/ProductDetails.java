@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 
 public class ProductDetails implements Serializable {
-    //private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/product_details.txt";
-    private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/product_details.txt";
+    private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step4/src/TextFiles/product_details.txt";
+    //private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/product_details.txt";
     private static ArrayList<ProductDetails> productDetailsList = new ArrayList<>();
 
     private String productID;
@@ -31,6 +31,7 @@ public class ProductDetails implements Serializable {
         try {
             ArrayList<ProductDetails> savedProductDetails;
 
+            //If file doesn't exist, create it
             File file = new File(FILE_PATH);
             if (file.exists()) {
                 FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
@@ -101,6 +102,7 @@ public class ProductDetails implements Serializable {
 
             boolean productFound = false;
 
+            //Loop through product details and check for productID then read to user
             for (ProductDetails product : productDetailsList) {
                 if (product.getProductID().equals(searchProductID)) {
                     System.out.println("Product Details:");

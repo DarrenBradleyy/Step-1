@@ -2,21 +2,25 @@ package Java;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Orders {
 
-    private static final String STOCKFILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
-    //private static final String STOCKFILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/stock.txt";
-    private static final String PRODUCTDETAILSFILE_PATH = "C:/uni files/cs112/src/TextFiles/product_details.txt";
-    //private static final String PRODUCTDETAILSFILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/product_codes.txt";
+
+    //private static final String STOCKFILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
+    private static final String STOCKFILE_PATH = "C:/Uni work/term 3/cs 112 project/Step4/src/TextFiles/stock.txt";
+    //private static final String PRODUCTDETAILSFILE_PATH = "C:/uni files/cs112/src/TextFiles/product_details.txt";
+    private static final String PRODUCTDETAILSFILE_PATH = "C:/Uni work/term 3/cs 112 project/Step4/src/TextFiles/product_details.txt";
+    private static LocalDate date = LocalDate.now() ;
 
     public static void startOrder(){
         try (FileInputStream fileInputStream = new FileInputStream(STOCKFILE_PATH);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
 
+            //Get stock and product details from files
             ArrayList<Stock> stockArrayList = (ArrayList<Java.Stock>) objectInputStream.readObject();
             ArrayList<ProductDetails> productDetails = getProductDetails();
             float price = 0;
@@ -40,7 +44,7 @@ public class Orders {
                 else {confirmation=false;}
             }
 
-            System.out.println("This order can be fulfilled and collected on ___. The total price is £" + price);
+            System.out.println("This order can be fulfilled and collected on " +date+ ". The total price is £" + price);
             System.out.println("Press any key to continue... ");
             System.out.println("");
             Scanner newScanner = new Scanner(System.in);
@@ -81,10 +85,11 @@ public class Orders {
                     int glasgowAmount = stockList.getGlasgow();
                     if (glasgowAmount>=amount){
                         price +=productDetails.get(count).getPrice();
+
                     } else {
                         if ((glasgowAmount+stockList.getGourock()+stockList.getEdinburgh())>=amount){
                             price +=productDetails.get(count).getPrice();
-
+                            date.plusDays(2);
                         }
                     }
                 }

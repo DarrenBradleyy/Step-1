@@ -20,7 +20,9 @@ import java.util.Scanner;
     }
 
     public static String interfaces(String component){
+        //Check what the component type is
         if (component=="Motherboard"){
+            //Set Interface for component
             interfaceType=CPU() +", "+GPU()+", "+Memory()+", "+Storage()+", "+PSU();
         }
         else if (component=="CPU"){

@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class ChangeStock {
 
-    private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
-    //private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/stock.txt";
+    //private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
+    private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step4/src/TextFiles/stock.txt";
     private static int amount;
     private static int transferLocation;
 
@@ -31,6 +31,7 @@ public class ChangeStock {
         Stock stock;
         Boolean checked = false;
 
+        //Get user input about change stock options
         do {
             System.out.println("Select Option:");
             System.out.println("1. Add stock to a location");
@@ -73,6 +74,7 @@ public class ChangeStock {
         Location location;
         Boolean checked = false;
 
+        //Get location to add stock to
         do {
             System.out.println("Select Location:");
             System.out.println("1. Glasgow");
@@ -84,6 +86,7 @@ public class ChangeStock {
             int choice = scanner.nextInt();
             location = Location.values()[choice - 1];
 
+            //Change stock levels
             switch (location) {
                 case Glasgow:
                     System.out.println("You selected Glasgow");
@@ -136,6 +139,7 @@ public class ChangeStock {
         Location location;
         Boolean checked = false;
 
+        //Get location to deduct stock from
         do {
             System.out.println("Select Location:");
             System.out.println("1. Glasgow");
@@ -147,6 +151,7 @@ public class ChangeStock {
             int choice = scanner.nextInt();
             location = Location.values()[choice - 1];
 
+            //Change stock levels
             switch (location) {
                 case Glasgow:
                     System.out.println("You selected Glasgow");
@@ -202,6 +207,7 @@ public class ChangeStock {
         int edinburghAmount = stockLevels.getEdinburgh();
         int gourockAmount = stockLevels.getGourock();
 
+        //Get location to transfer stock from
         do {
             System.out.println("Select Location to transfer from:");
             System.out.println("1. Glasgow");
@@ -213,6 +219,8 @@ public class ChangeStock {
             int choice = scanner.nextInt();
             location = Location.values()[choice - 1];
 
+
+            //Select location to add stock to
             switch (location) {
                 case Glasgow:
                     System.out.println("You selected Glasgow");

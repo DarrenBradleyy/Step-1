@@ -30,6 +30,7 @@ public class Component {
             System.out.println("7. Main Menu");
             System.out.print("Select a Component: ");
 
+            //Get the Component type
             int choice = scanner.nextInt();
             components = Components.values()[choice - 1];
 

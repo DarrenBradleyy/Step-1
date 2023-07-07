@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 
 public class Stock implements Serializable {
-    private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
-    //private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/stock.txt";
+    //private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
+    private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step4/src/TextFiles/stock.txt";
     private static ArrayList<Stock> stockList = new ArrayList<>();
 
     private String productID;
@@ -27,6 +27,7 @@ public class Stock implements Serializable {
         try {
             ArrayList<Stock> savedStockList;
 
+            //If file doesn't exist, create it
             File file = new File(FILE_PATH);
             if (file.exists()) {
                 FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
@@ -72,6 +73,7 @@ public class Stock implements Serializable {
 
             boolean stockFound = false;
 
+            //Loop through stock and check if product ID exists if so write stock details
             for (Stock stock : stockArrayList) {
                 if (stock.getProductID().equals(searchProductID)) {
                     System.out.println("Stock:");

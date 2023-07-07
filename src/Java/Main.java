@@ -58,6 +58,7 @@ public class Main {
             System.out.println("7. Exit");
             System.out.print("Select an option: ");
 
+            //Get Choice from User
             int choice = askForNumber();
             selectedOption = Options.values()[choice - 1];
 
