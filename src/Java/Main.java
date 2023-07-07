@@ -11,6 +11,7 @@ public class Main {
         ProductDetails,
         CheckStock,
         ChangeStock,
+        OrderFulfillment,
         Exit
     }
 
@@ -53,7 +54,8 @@ public class Main {
             System.out.println("3. View all product Details");
             System.out.println("4. Check product stock levels");
             System.out.println("5. Change product stock levels");
-            System.out.println("6. Exit");
+            System.out.println("6. Order Fulfillment");
+            System.out.println("7. Exit");
             System.out.print("Select an option: ");
 
             int choice = askForNumber();
@@ -64,7 +66,7 @@ public class Main {
                     System.out.println("You selected Option 1.");
                     System.out.println(" ");
                     String component = Component.component();
-                    String interfaces = Interface.interfaces();
+                    String interfaces = Interface.interfaces(component);
                     Details.details(component, interfaces);
                     return true;
                 case ProductID:
@@ -86,6 +88,11 @@ public class Main {
                     System.out.println("You selected Option 5.");
                     System.out.println(" ");
                     ChangeStock.getStock();
+                    return true;
+                case OrderFulfillment:
+                    System.out.println("You selected Option 6.");
+                    System.out.println(" ");
+                    Orders.startOrder();
                     return true;
                 case Exit:
                     System.out.println("Exiting Menu");

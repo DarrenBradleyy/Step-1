@@ -4,6 +4,8 @@ import java.util.Scanner;
 
     public class Interface {
 
+        private static String interfaceType;
+
     enum Components {
         SocketAM,
         LGA,
@@ -14,12 +16,33 @@ import java.util.Scanner;
         NVME,
         SATA,
         ATX,
-        ITX,
-        BACK,
+        ITX
     }
 
-    public static String interfaces(){
-        Scanner scanner = new Scanner(System.in);
+    public static String interfaces(String component){
+        if (component=="Motherboard"){
+            interfaceType=CPU() +", "+GPU()+", "+Memory()+", "+Storage()+", "+PSU();
+        }
+        else if (component=="CPU"){
+            interfaceType=CPU();
+        } else if (component=="GPU") {
+            interfaceType=GPU();
+        }
+        else if (component=="Memory") {
+            interfaceType=Memory();
+        }
+        else if (component=="Storage") {
+            interfaceType=Storage();
+        }
+        else if (component=="PSU") {
+            interfaceType=PSU();
+        }
+        return interfaceType;
+
+    }
+
+    private static String CPU(){
+        Scanner cpuScanner = new Scanner(System.in);
         Components components;
         Boolean checked = false;
 
@@ -27,18 +50,9 @@ import java.util.Scanner;
             System.out.println("Select Interface Type:");
             System.out.println("1.SocketAM ");
             System.out.println("2.LGA");
-            System.out.println("3.PCIe ");
-            System.out.println("4.DDR3 ");
-            System.out.println("5.DDR4 ");
-            System.out.println("6.DDR5 ");
-            System.out.println("7.NVME ");
-            System.out.println("8.SATA ");
-            System.out.println("9.ATX ");
-            System.out.println("10.ITX ");
-            System.out.println("11.Main Menu");
             System.out.print("Select a Interface: ");
 
-            int choice = scanner.nextInt();
+            int choice = cpuScanner.nextInt();
             components = Components.values()[choice - 1];
 
             switch (components) {
@@ -50,10 +64,37 @@ import java.util.Scanner;
                     System.out.println("You selected LGA");
                     System.out.println("");
                     return "LGA";
-                case PCIe:
-                    System.out.println("You selected PCIe");
-                    System.out.println("");
-                    return "PCIe";
+
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        } while(true);
+    }
+
+
+    private static String GPU(){
+        System.out.println("You selected PCIe");
+        System.out.println("");
+        return "PCIe";
+    }
+
+    private static String Memory(){
+        Scanner memoryScanner = new Scanner(System.in);
+        Components components;
+        Boolean checked = false;
+
+        do {
+            System.out.println("Select Interface Type:");
+            System.out.println("4.DDR3 ");
+            System.out.println("5.DDR4");
+            System.out.println("6.DDR5");
+            System.out.print("Select a Interface: ");
+
+            int choice = memoryScanner.nextInt();
+            components = Components.values()[choice - 1];
+
+            switch (components) {
                 case DDR3:
                     System.out.println("You selected DDR3");
                     System.out.println("");
@@ -66,6 +107,29 @@ import java.util.Scanner;
                     System.out.println("You selected DDR5");
                     System.out.println("");
                     return "DDR5";
+
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        } while(true);
+    }
+
+    private static String Storage(){
+        Scanner storageScanner = new Scanner(System.in);
+        Components components;
+        Boolean checked = false;
+
+        do {
+            System.out.println("Select Interface Type:");
+            System.out.println("7.NVME ");
+            System.out.println("8.SATA");
+            System.out.print("Select a Interface: ");
+
+            int choice = storageScanner.nextInt();
+            components = Components.values()[choice - 1];
+
+            switch (components) {
                 case NVME:
                     System.out.println("You selected NVME");
                     System.out.println("");
@@ -74,6 +138,29 @@ import java.util.Scanner;
                     System.out.println("You selected SATA");
                     System.out.println("");
                     return "SATA";
+
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        } while(true);
+    }
+
+    private static String PSU(){
+        Scanner psuScanner = new Scanner(System.in);
+        Components components;
+        Boolean checked = false;
+
+        do {
+            System.out.println("Select Interface Type:");
+            System.out.println("9.ATX ");
+            System.out.println("10.ITX");
+            System.out.print("Select a Interface: ");
+
+            int choice = psuScanner.nextInt();
+            components = Components.values()[choice - 1];
+
+            switch (components) {
                 case ATX:
                     System.out.println("You selected ATX");
                     System.out.println("");
@@ -82,18 +169,14 @@ import java.util.Scanner;
                     System.out.println("You selected ITX");
                     System.out.println("");
                     return "ITX";
-                case BACK:
-                    System.out.println("Return to Main Menu");
-                    System.out.println("");
-
-                    Main.restartProgram();
 
                 default:
                     System.out.println("Invalid option. Please try again.");
                     break;
             }
         } while(true);
-
     }
+
+
 }
 

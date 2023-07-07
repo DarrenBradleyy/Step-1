@@ -1,5 +1,6 @@
 package Java;
 
+import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,8 +63,14 @@ public class Details {
     }
 
     private static String getNextSerialNumber(String manufacturerCode) {
-        int serialNumber = usedSerialNumbers.getOrDefault(manufacturerCode, 0) + 1;
-        usedSerialNumbers.put(manufacturerCode, serialNumber);
+        ArrayList<ProductDetails> productDetails = Orders.getProductDetails();
+        int serialNumber = 1;
+        for (ProductDetails product : productDetails) {
+            String productID = product.getProductID();
+            if (productID.contains(manufacturerCode)) {
+                return String.valueOf(serialNumber+=1);
+            }
+        }
         return String.valueOf(serialNumber);
     }
 }

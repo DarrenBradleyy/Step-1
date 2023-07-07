@@ -10,6 +10,7 @@ public class Component {
         Memory,
         Storage,
         PSU,
+        Motherboard,
         BACK
     }
 
@@ -25,7 +26,8 @@ public class Component {
             System.out.println("3. Memory");
             System.out.println("4. Storage");
             System.out.println("5. PSU");
-            System.out.println("6. Main Menu");
+            System.out.println("6. Motherboard");
+            System.out.println("7. Main Menu");
             System.out.print("Select a Component: ");
 
             int choice = scanner.nextInt();
@@ -52,6 +54,10 @@ public class Component {
                     System.out.println("You selected PSU");
                     System.out.println("");
                     return "PSU";
+                case Motherboard:
+                    System.out.println("You selected Motherboard");
+                    System.out.println("");
+                    return "Motherboard";
                 case BACK:
                     System.out.println("Returning to Main Menu");
                     System.out.println("");
