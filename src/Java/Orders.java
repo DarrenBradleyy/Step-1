@@ -65,7 +65,7 @@ public class Orders {
         }
     }
 
-    private static float getPrice(ArrayList<Stock> stockArrayList, Scanner scanner, int choice, float price, ArrayList<ProductDetails> productDetails, int count){
+    public static float getPrice(ArrayList<Stock> stockArrayList, Scanner scanner, int choice, float price, ArrayList<ProductDetails> productDetails, int count){
         Scanner priceScanner = new Scanner(System.in);
         System.out.print("Enter the product ID: ");
         System.out.println(" ");

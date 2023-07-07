@@ -56,7 +56,7 @@ public class Details {
         }
     }
 
-    private static String padManufacturerCode(String manufacturer) {
+    public static String padManufacturerCode(String manufacturer) {
         String paddedManufacturerCode = manufacturer.substring(0, Math.min(manufacturer.length(), 4)).toUpperCase();
         paddedManufacturerCode = String.format("%-4s", paddedManufacturerCode).replace(' ', 'x');
         return paddedManufacturerCode;

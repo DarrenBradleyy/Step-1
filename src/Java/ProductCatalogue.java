@@ -14,7 +14,7 @@ public class ProductCatalogue {
         saveProductCodeToFile(productID);
     }
 
-    private static void saveProductCodeToFile(String productCode) {
+    public static void saveProductCodeToFile(String productCode) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE_PATH, true)))) {
             out.println(productCode);
             System.out.println("Product code saved to file.");
