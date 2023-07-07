@@ -9,7 +9,9 @@ import java.util.Scanner;
 public class Orders {
 
     private static final String STOCKFILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
+    //private static final String STOCKFILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/stock.txt";
     private static final String PRODUCTDETAILSFILE_PATH = "C:/uni files/cs112/src/TextFiles/product_details.txt";
+    //private static final String PRODUCTDETAILSFILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/product_codes.txt";
 
     public static void startOrder(){
         try (FileInputStream fileInputStream = new FileInputStream(STOCKFILE_PATH);

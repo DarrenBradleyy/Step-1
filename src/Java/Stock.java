@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Stock implements Serializable {
     private static final String FILE_PATH = "C:/uni files/cs112/src/TextFiles/stock.txt";
+    //private static final String FILE_PATH = "C:/Uni work/term 3/cs 112 project/Step2/src/TextFiles/stock.txt";
     private static ArrayList<Stock> stockList = new ArrayList<>();
 
     private String productID;
